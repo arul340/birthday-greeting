@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -18,11 +16,10 @@ const Home = () => {
   }, []);
 
   const rotationDegree = scrollY * 0.1; // parallax speed
-  const parallaxOffset = scrollY * 0.5; // parallax speed
+  const parallaxOffset = scrollY * 0.5;
 
   return (
     <>
-      <Navbar />
       {/* Hero Section */}
       <div className="bg-header min-h-screen">
         {/* Hero Section */}
@@ -62,8 +59,6 @@ const Home = () => {
         </section>
         <div className="w-full h-32 bg-header"></div>
       </div>
-
-      <Footer />
     </>
   );
 };

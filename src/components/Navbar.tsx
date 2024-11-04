@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "Coupons", href: "/coupons" },
+  { name: "Timeline", href: "/timeline" },
+  { name: "Gallery", href: "/gallery" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,9 +21,9 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center p-4 lg:px-24">
         {/* Logo */}
         <div className="text-2xl font-bold flex items-center space-x-2">
-          <Link to={"/"}>
+          <NavLink to={"/"}>
             <img src="logo.png" alt="Logo" className="w-36" />
-          </Link>
+          </NavLink>
         </div>
 
         {/* Hamburger Menu Icon */}
@@ -28,18 +35,15 @@ const Navbar = () => {
 
         {/* Desktop Menu Items */}
         <nav className="hidden ml-auto lg:flex lg:space-x-8 text-gray-500 font-medium text-sm ">
-          <Link to="/" className="lg:hover:text-gray-700">
-            Home
-          </Link>
-          <Link to="/" className="lg:hover:text-gray-700">
-            Coupons
-          </Link>
-          <Link to="/" className="lg:hover:text-gray-700">
-            Timeline
-          </Link>
-          <Link to="/" className="lg:hover:text-gray-700">
-            Gallery
-          </Link>
+          {navigation.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              className="lg:hover:text-gray-700"
+            >
+              {item.name}
+            </NavLink>
+          ))}
         </nav>
       </div>
 
@@ -50,26 +54,14 @@ const Navbar = () => {
         }`}
       >
         <ul className="flex flex-col text-gray-500 font-semibold p-4">
-          <li className="border-b border-gray-100 hover:bg-gray-50">
-            <a href="#" className="block p-3 py-3 hover:text-gray-400 text-sm">
-              Home
-            </a>
-          </li>
-          <li className="border-b border-gray-100 hover:bg-gray-50">
-            <a href="#" className="block p-3  hover:text-gray-400 text-sm">
-              Coupon
-            </a>
-          </li>
-          <li className="border-b border-gray-100 hover:bg-gray-50">
-            <a href="#" className="block p-3  hover:text-gray-400 text-sm">
-              Gift
-            </a>
-          </li>
-          <li className="border-b border-gray-100 hover:bg-gray-50">
-            <a href="#" className="block p-3  hover:text-gray-400 text-sm">
-              Crossword
-            </a>
-          </li>
+          {navigation.map((item) => (
+            <li
+              key={item.name}
+              className="border-b border-gray-100 hover:bg-gray-50"
+            >
+              <NavLink to={item.href}>{item.name}</NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>
