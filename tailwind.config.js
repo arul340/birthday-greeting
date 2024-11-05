@@ -5,10 +5,6 @@ export default {
     extend: {
       colors: {
         header: "#EEE8E2",
-        letter: "#D4C8C6",
-        coupons: "#F0B4BC",
-        timeline: "#E26475",
-        gallery: "#A23A60",
       },
     },
     fontFamily: {
