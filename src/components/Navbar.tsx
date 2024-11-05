@@ -22,7 +22,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="text-2xl font-bold flex items-center space-x-2">
           <NavLink to={"/"}>
-            <img src="logo.png" alt="Logo" className="w-36" />
+            <img src="logo.webp" alt="Logo" className="w-36" />
           </NavLink>
         </div>
 
