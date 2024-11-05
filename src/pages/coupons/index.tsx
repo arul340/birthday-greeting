@@ -1,4 +1,18 @@
+import FlipCard from "@/components/flip-card";
 import Heading from "@/components/heading";
+
+const coupons = [
+  {
+    code: "Example Giftcard Code",
+    front: "coupon/image.png",
+    back: "coupon/image.png",
+  },
+  {
+    code: "Example Giftcard Code",
+    front: "coupon/image.png",
+    back: "coupon/image.png",
+  },
+];
 
 const Coupons = () => {
   return (
@@ -23,11 +37,14 @@ const Coupons = () => {
             </p>
           </section>
 
-          <div className="mt-10 grid lg:grid-cols-2 grid-cols-1">
-            <img
-              src="https://happybirthday.keepsake.id/wp-content/uploads/sites/2/2023/02/2.png"
-              alt=""
-            />
+          <div className="mt-8 grid lg:grid-cols-2 gap-2 space-y-10 md:space-y-0 ">
+            {coupons.map((coupon) => (
+              <FlipCard
+                key={coupon.code}
+                front={coupon.front}
+                back={coupon.back}
+              />
+            ))}
           </div>
         </div>
       </div>
