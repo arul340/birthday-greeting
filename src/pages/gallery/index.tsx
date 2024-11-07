@@ -102,49 +102,45 @@ const Gallery: React.FC = () => {
 
   return (
     <>
-      <div className="bg-[#FCFCFE] mb-32">
+      <div className="mb-32">
         <div className="container mx-auto px-4 lg:px-24">
           <section className="overflow-hidden text-gray-700">
-            <Heading title="gallery" subtitle="Lorem ipsum" />
-            <div className="container px-5 py-2 mx-auto">
-              <div className="flex flex-wrap -m-1 md:-m-2">
-                {/* Left Column */}
-                <div className="flex flex-wrap w-1/2">
-                  {images.slice(0, 3).map((image, index) => (
-                    <div
-                      key={image.id}
-                      className={`${
-                        index === 2 ? "w-full" : "w-1/2"
-                      } p-1 md:p-2`}
-                      onClick={() => openSlider(index)}
-                    >
-                      <img
-                        alt={image.alt}
-                        className="block object-cover object-center w-full h-64 rounded-lg cursor-pointer"
-                        src={image.src}
-                      />
-                    </div>
-                  ))}
-                </div>
+            <div className="mt-32">
+              <Heading title="Gallery" subtitle="Lorem ipsum" />
+            </div>
+            <div className="flex flex-wrap -m-1 md:-m-2">
+              {/* Left Column */}
+              <div className="flex flex-wrap w-full md:w-1/2">
+                {images.slice(0, 3).map((image, index) => (
+                  <div
+                    key={image.id}
+                    className={`${index === 2 ? "w-full" : "w-1/2"} p-1 md:p-2`}
+                    onClick={() => openSlider(index)}
+                  >
+                    <img
+                      alt={image.alt}
+                      className="block object-cover object-center w-full h-64 rounded-lg cursor-pointer"
+                      src={image.src}
+                    />
+                  </div>
+                ))}
+              </div>
 
-                {/* Right Column */}
-                <div className="flex flex-wrap w-1/2">
-                  {images.slice(3).map((image, index) => (
-                    <div
-                      key={image.id}
-                      className={`${
-                        index === 0 ? "w-full" : "w-1/2"
-                      } p-1 md:p-2`}
-                      onClick={() => openSlider(index + 3)}
-                    >
-                      <img
-                        alt={image.alt}
-                        className="block object-cover object-center w-full h-64 rounded-lg cursor-pointer"
-                        src={image.src}
-                      />
-                    </div>
-                  ))}
-                </div>
+              {/* Right Column */}
+              <div className="flex flex-wrap w-full md:w-1/2">
+                {images.slice(3).map((image, index) => (
+                  <div
+                    key={image.id}
+                    className={`${index === 0 ? "w-full" : "w-1/2"} p-1 md:p-2`}
+                    onClick={() => openSlider(index + 3)}
+                  >
+                    <img
+                      alt={image.alt}
+                      className="block object-cover object-center w-full h-64 rounded-lg cursor-pointer"
+                      src={image.src}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </section>

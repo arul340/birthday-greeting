@@ -39,7 +39,7 @@ const GiftBox: React.FC<GiftBoxProps> = ({ toggleModal }) => {
         <div className="box"></div>
       </div>
       <div
-        className="letter-card relative bg-[#F0B4BC] text-center p-10 rounded-lg shadow-lg max-w-md w-full text-black overflow-y-auto font-inter no-scrollbar"
+        className="letter-card relative bg-rose text-center p-10 rounded-lg shadow-lg max-w-md lg:w-full w-[90%] text-[#2B343A] overflow-y-auto font-inter no-scrollbar"
         style={{ opacity: step === 3 ? 1 : 0, maxHeight: "80vh" }} // Limit height to 90% of the viewport
       >
         {/* Close Button */}
@@ -51,10 +51,10 @@ const GiftBox: React.FC<GiftBoxProps> = ({ toggleModal }) => {
         </button>
 
         {/* Title */}
-        <h2 className="text-3xl font-bold mb-2">Happy birthday, sayang!</h2>
+        <h2 className="text-3xl  font-inter mb-2">Happy birthday, sayang!</h2>
 
         {/* Subtitle */}
-        <p className="text-gray-800 mb-4">
+        <p className="text-gray-800 mb-4 text-sm">
           to the one brought so much joy, laughter, and happiness into my life,
           the one I'm grateful for.
         </p>
@@ -63,7 +63,7 @@ const GiftBox: React.FC<GiftBoxProps> = ({ toggleModal }) => {
         <hr className="border-t border-gray-300 my-4" />
 
         {/* Letter Content */}
-        <div className="text-left space-y-4 text-gray-900 pr-2">
+        <div className="space-y-4 text-gray-900 pr-2 text-sm text-justify">
           <p>
             <strong>My dearest Michelle</strong>
           </p>

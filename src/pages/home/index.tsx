@@ -1,5 +1,4 @@
-// Home.tsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import CardMenu from "@/components/card-menu";
 import GiftBox from "@/components/giftbox"; // Import GiftBox component
 
@@ -48,7 +47,10 @@ const Home = () => {
   }, []);
 
   const [scrollY, setScrollY] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isGreetingOpen, setIsGreetingOpen] = useState(true);
+  const greetingModalRef = useRef<HTMLDivElement | null>(null); // Ref for greeting modal
+  const giftBoxModalRef = useRef<HTMLDivElement | null>(null); // Ref for gift box modal
 
   const handleScroll = () => {
     const maxScrollY = 300; // Limit scrolling effect to 300px
@@ -70,16 +72,36 @@ const Home = () => {
   const rotationDegree = scrollY * 0.1;
   const parallaxOffset = scrollY * 0.5;
 
-  // Function to open and close the modal
+  // Function to open and close the gift box modal
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
+  };
+
+  // Close greeting modal when clicking outside
+  const handleGreetingModalClick = (e: React.MouseEvent) => {
+    if (
+      greetingModalRef.current &&
+      !greetingModalRef.current.contains(e.target as Node)
+    ) {
+      setIsGreetingOpen(false);
+    }
+  };
+
+  // Close gift box modal when clicking outside
+  const handleGiftBoxModalClick = (e: React.MouseEvent) => {
+    if (
+      giftBoxModalRef.current &&
+      !giftBoxModalRef.current.contains(e.target as Node)
+    ) {
+      setIsModalOpen(false);
+    }
   };
 
   return (
     <>
       {/* Hero Section */}
-      <div className="min-h-screen bg-header">
-        <section className="container mx-auto px-4 lg:px-24 font-montserrat h-screen flex items-center">
+      <div className="min-h-screen bg-header overflow-hidden">
+        <section className="container mx-auto px-4 lg:px-24 font-montserrat min-h-screen flex items-center">
           <div className="grid md:grid-cols-3 grid-cols-1 gap-8 items-center relative">
             <div className="flex flex-col space-y-4 col-span-2 z-10 bg-header lg:mt-0 mt-20">
               <p className="uppercase text-lg tracking-[.3em] font-medium text-gray-500">
@@ -111,13 +133,30 @@ const Home = () => {
               <img
                 src="hero.webp"
                 alt="Bouquet"
-                className="object-cover max-w-full h-auto lg:mt-32 -rotate-12  lg:scale-150"
+                className="object-cover max-w-full h-auto lg:mt-32 -rotate-12 lg:scale-150"
               />
             </div>
           </div>
         </section>
-        <div className="w-full h-24 bg-header"></div>
+        <div className="w-full h-32 bg-header"></div>
       </div>
+
+      {/* Greeting Modal */}
+      {isGreetingOpen && (
+        <div
+          className="fixed inset-0 flex items-start top-0  bg-black bg-opacity-50 z-50"
+          onClick={handleGreetingModalClick}
+        >
+          <div
+            ref={greetingModalRef}
+            className="relative p-8 max-w-full lg:mx-40 mx-10 w-full bg-white top-10"
+          >
+            <span className="px-4 py-2 bg-[#E26475] text-white rounded-full">
+              Happy birthday! &lt;3
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* Menu Section */}
       <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
@@ -129,17 +168,24 @@ const Home = () => {
             bgColor={item.bgColor}
             buttonColor={item.buttonColor}
             buttonText={item.buttonText}
-            buttonLink={item.title === "Letter" ? "" : item.buttonLink} // No link for "Letter"
+            buttonLink={item.title === "Letter" ? "" : item.buttonLink}
             textColor={item.textColor}
-            onClick={item.title === "Letter" ? toggleModal : undefined} // Open modal on "Letter" click
+            onClick={item.title === "Letter" ? toggleModal : undefined}
           />
         ))}
       </div>
 
       {/* Modal for GiftBox */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="relative p-8 max-w-lg w-full">
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+          onClick={handleGiftBoxModalClick} // Call the click handler here
+        >
+          <div
+            ref={giftBoxModalRef}
+            className="relative p-8 max-w-lg w-full"
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+          >
             <GiftBox toggleModal={toggleModal} />
           </div>
         </div>

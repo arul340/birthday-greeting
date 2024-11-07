@@ -66,69 +66,77 @@ const Timeline: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 lg:px-24">
-      <Heading title="timeline" subtitle="of aviation history" />
-      <div className="flex flex-col md:flex-row items-center p-8 mb-16">
-        {/* Timeline Section */}
-        <div className="flex flex-col mr-8 relative w-1/2">
-          {timelineData.map((event, index) => (
-            <div key={event.id} className="flex items-center mb-6 relative">
-              {/* Garis antara lingkaran */}
-              {index !== timelineData.length - 1 && (
-                <div className="absolute left-2.5 top-[2.3rem] h-full w-[2px] bg-rose z-[-1]"></div>
+    <div className="mb-24">
+      <div className="container mx-auto px-4 lg:px-24">
+        <section className="overflow-hidden">
+          <div className="mt-32">
+            <Heading title="timeline" subtitle="of aviation history" />
+          </div>
+          <div className="flex flex-col md:flex-row items-center p-8 mb-16">
+            {/* Timeline Section */}
+            <div className="flex flex-col mr-8 relative lg:w-1/2">
+              {timelineData.map((event, index) => (
+                <div key={event.id} className="flex items-center mb-6 relative">
+                  {/* Garis antara lingkaran */}
+                  {index !== timelineData.length - 1 && (
+                    <div className="absolute left-2.5 top-[2.3rem] h-full w-[2px] bg-rose z-10"></div>
+                  )}
+
+                  <div
+                    onClick={() => handleClick(event)}
+                    className={`w-6 h-6 rounded-full cursor-pointer ${
+                      selectedEvent?.id === event.id ? "bg-mandy" : "bg-rose"
+                    }`}
+                  ></div>
+                  <div
+                    className="ml-4 text-left cursor-pointer"
+                    onClick={() => handleClick(event)}
+                  >
+                    <h3
+                      className={`${
+                        selectedEvent?.id === event.id
+                          ? "text-mandy font-semibold"
+                          : "text-gray-800"
+                      } text-lg`}
+                    >
+                      {event.title}
+                    </h3>
+                    <p
+                      className={`${
+                        selectedEvent?.id === event.id
+                          ? "text-mandy/70"
+                          : "text-gray-500"
+                      }`}
+                    >
+                      {event.date}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Display Card Section */}
+            <div className="flex-1 lg:w-1/2">
+              {selectedEvent && (
+                <div
+                  className="text-white bg-mandy rounded-2xl p-6 max-w-sm cursor-pointer"
+                  onClick={() => handleClick(selectedEvent)}
+                >
+                  <img
+                    src={selectedEvent.image}
+                    alt={selectedEvent.title}
+                    className="rounded-xl mb-4 w-full object-cover h-40"
+                  />
+                  <h2 className="text-2xl font-bold mb-2">
+                    {selectedEvent.title}
+                  </h2>
+                  <p className="text-sm text-white">{selectedEvent.date}</p>
+                  <p className="mt-4 text-white">{selectedEvent.description}</p>
+                </div>
               )}
-
-              <div
-                onClick={() => handleClick(event)}
-                className={`w-6 h-6 rounded-full cursor-pointer ${
-                  selectedEvent?.id === event.id ? "bg-mandy" : "bg-rose"
-                }`}
-              ></div>
-              <div
-                className="ml-4 text-left cursor-pointer"
-                onClick={() => handleClick(event)}
-              >
-                <h3
-                  className={`${
-                    selectedEvent?.id === event.id
-                      ? "text-mandy font-semibold"
-                      : "text-gray-800"
-                  } text-lg`}
-                >
-                  {event.title}
-                </h3>
-                <p
-                  className={`${
-                    selectedEvent?.id === event.id
-                      ? "text-mandy/70"
-                      : "text-gray-500"
-                  }`}
-                >
-                  {event.date}
-                </p>
-              </div>
             </div>
-          ))}
-        </div>
-
-        {/* Display Card Section */}
-        <div className="flex-1 w-1/2">
-          {selectedEvent && (
-            <div
-              className="text-white bg-mandy rounded-2xl p-6 max-w-sm cursor-pointer"
-              onClick={() => handleClick(selectedEvent)}
-            >
-              <img
-                src={selectedEvent.image}
-                alt={selectedEvent.title}
-                className="rounded-xl mb-4 w-full object-cover h-40"
-              />
-              <h2 className="text-2xl font-bold mb-2">{selectedEvent.title}</h2>
-              <p className="text-sm text-white">{selectedEvent.date}</p>
-              <p className="mt-4 text-white">{selectedEvent.description}</p>
-            </div>
-          )}
-        </div>
+          </div>
+        </section>
       </div>
     </div>
   );
