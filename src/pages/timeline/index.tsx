@@ -72,9 +72,9 @@ const Timeline = () => {
           <div className="mt-28">
             <Heading title="timeline" subtitle="of aviation history" />
           </div>
-          <div className="flex flex-col md:flex-row items-center p-8 mb-16">
+          <div className="flex flex-col md:flex-row gap-4 lg:items-center px-5 lg:p-8 mb-16">
             {/* Timeline Section */}
-            <div className="flex flex-col mr-8 relative lg:w-1/2">
+            <div className="flex flex-col  lg:mr-8 relative lg:w-1/2">
               {timelineData.map((event, index) => (
                 <div key={event.id} className="flex items-center mb-6 relative">
                   {/* Garis antara lingkaran */}

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -11,10 +11,15 @@ const navigation = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   return (
     <header className="fixed bg-white shadow font-inter z-50 max-w-full w-full">
@@ -47,20 +52,19 @@ const Navbar = () => {
         </nav>
       </div>
 
-      {/* Mobile Menu Items*/}
+      {/* Mobile Menu Items */}
       <nav
-        className={`lg:hidden bg-white shadow absolute top-full left-1/2 transform -translate-x-1/2 w-4/5  ease-in-out transition-all duration-700 overflow-hidden z-50 ${
+        className={`lg:hidden bg-white shadow absolute top-full left-1/2 transform -translate-x-1/2 w-4/5 ease-in-out transition-all duration-700 overflow-hidden z-50 ${
           isOpen ? "max-h-60 border-t-[3px] border-black" : "max-h-0"
         }`}
       >
         <ul className="flex flex-col text-gray-500 p-3 font-medium">
           {navigation.map((item) => (
-            <li
-              key={item.name}
-              className="border-b border-gray-100 hover:bg-gray-50 p-3 text-sm"
-            >
-              <NavLink to={item.href}>{item.name}</NavLink>
-            </li>
+            <NavLink key={item.name} to={item.href}>
+              <li className="border-b border-gray-100 hover:bg-gray-50 p-3 text-sm">
+                {item.name}
+              </li>
+            </NavLink>
           ))}
         </ul>
       </nav>
