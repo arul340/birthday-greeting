@@ -1,5 +1,7 @@
+// Home.tsx
 import { useState, useEffect } from "react";
 import CardMenu from "@/components/card-menu";
+import GiftBox from "@/components/giftbox"; // Import GiftBox component
 
 const menus = [
   {
@@ -41,10 +43,15 @@ const menus = [
 ];
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [scrollY, setScrollY] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   const handleScroll = () => {
-    const maxScrollY = 300; // Batas scroll hingga 500px
+    const maxScrollY = 300; // Limit scrolling effect to 300px
     const newScrollY = window.scrollY;
 
     if (newScrollY <= maxScrollY) {
@@ -62,6 +69,11 @@ const Home = () => {
 
   const rotationDegree = scrollY * 0.1;
   const parallaxOffset = scrollY * 0.5;
+
+  // Function to open and close the modal
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <>
@@ -107,8 +119,8 @@ const Home = () => {
         <div className="w-full h-24 bg-header"></div>
       </div>
 
-      {/* menu section */}
-      <div className="grid lg:grid-cols-4 grid-cols-2">
+      {/* Menu Section */}
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
         {menus.map((item) => (
           <CardMenu
             key={item.title}
@@ -117,11 +129,21 @@ const Home = () => {
             bgColor={item.bgColor}
             buttonColor={item.buttonColor}
             buttonText={item.buttonText}
-            buttonLink={item.buttonLink}
+            buttonLink={item.title === "Letter" ? "" : item.buttonLink} // No link for "Letter"
             textColor={item.textColor}
+            onClick={item.title === "Letter" ? toggleModal : undefined} // Open modal on "Letter" click
           />
         ))}
       </div>
+
+      {/* Modal for GiftBox */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="relative p-8 max-w-lg w-full">
+            <GiftBox toggleModal={toggleModal} />
+          </div>
+        </div>
+      )}
     </>
   );
 };

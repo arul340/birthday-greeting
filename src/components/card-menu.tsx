@@ -9,6 +9,7 @@ interface MenuProps {
   buttonText: string;
   buttonLink: string;
   textColor: string;
+  onClick?: () => void;
 }
 
 const CardMenu = ({
@@ -19,6 +20,7 @@ const CardMenu = ({
   buttonText,
   buttonLink,
   textColor,
+  onClick,
 }: MenuProps) => {
   return (
     <div className={`flex flex-col ${bgColor}`}>
@@ -33,7 +35,7 @@ const CardMenu = ({
         className={`flex flex-col items-center justify-center font-montserrat  pb-20`}
       >
         <h1 className={`uppercase font-bold text-2xl ${textColor}`}>{title}</h1>
-        <button className="mt-10">
+        <button className="mt-10" onClick={onClick}>
           <Link
             to={buttonLink}
             className={`relative p-5 px-10 font-semibold uppercase ${textColor} transition-all duration-300 ${buttonColor} text-xs tracking-[.3em] inline-flex items-center group`}
