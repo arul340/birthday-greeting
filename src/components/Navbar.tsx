@@ -53,11 +53,11 @@ const Navbar = () => {
           isOpen ? "max-h-60 border-t-[3px] border-black" : "max-h-0"
         }`}
       >
-        <ul className="flex flex-col text-gray-500 font-semibold p-4">
+        <ul className="flex flex-col text-gray-500 p-3 font-medium">
           {navigation.map((item) => (
             <li
               key={item.name}
-              className="border-b border-gray-100 hover:bg-gray-50"
+              className="border-b border-gray-100 hover:bg-gray-50 p-3 text-sm"
             >
               <NavLink to={item.href}>{item.name}</NavLink>
             </li>
