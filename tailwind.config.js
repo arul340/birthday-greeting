@@ -5,6 +5,8 @@ export default {
     extend: {
       colors: {
         header: "#EEE8E2",
+        mandy: "#D05D6C",
+        rose: "#EFB4BC",
       },
     },
     fontFamily: {
