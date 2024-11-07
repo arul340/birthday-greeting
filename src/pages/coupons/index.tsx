@@ -1,5 +1,6 @@
 import FlipCard from "@/components/flip-card";
 import Heading from "@/components/heading";
+import { useEffect } from "react";
 
 const coupons = [
   {
@@ -15,11 +16,14 @@ const coupons = [
 ];
 
 const Coupons = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="bg-[#FCFCFE] mb-32">
         <div className="container mx-auto px-4 lg:px-24 ">
-          <Heading />
+          <Heading title="COUPONS" subtitle="for your special day &lt;3" />
 
           <section className="font-inter">
             <h3 className="font-semibold my-5">Terms & Condition</h3>
