@@ -101,7 +101,7 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <div className="min-h-screen bg-header overflow-hidden">
-        <section className="container mx-auto px-4 lg:px-24 font-montserrat min-h-screen flex items-center">
+        <section className="container mx-auto px-4 lg:px-24 font-montserrat min-h-screen flex items-center pt-48">
           <div className="grid md:grid-cols-3 grid-cols-1 gap-8 items-center relative">
             <div className="flex flex-col space-y-4 col-span-2 z-10 bg-header lg:mt-0 mt-20">
               <p className="uppercase text-lg tracking-[.3em] font-medium text-gray-500">
@@ -138,13 +138,13 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <div className="w-full h-32 bg-header"></div>
+        <div className="w-full h-48 bg-header"></div>
       </div>
 
       {/* Greeting Modal */}
       {isGreetingOpen && (
         <div
-          className="fixed inset-0 flex items-start top-0  bg-black bg-opacity-50 z-50"
+          className="fixed inset-0 flex items-start top-[4.8rem]  bg-black bg-opacity-50 z-40"
           onClick={handleGreetingModalClick}
         >
           <div

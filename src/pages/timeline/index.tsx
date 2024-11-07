@@ -52,7 +52,7 @@ const timelineData: TimelineEvent[] = [
   },
 ];
 
-const Timeline: React.FC = () => {
+const Timeline = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -69,7 +69,7 @@ const Timeline: React.FC = () => {
     <div className="mb-24">
       <div className="container mx-auto px-4 lg:px-24">
         <section className="overflow-hidden">
-          <div className="mt-32">
+          <div className="mt-28">
             <Heading title="timeline" subtitle="of aviation history" />
           </div>
           <div className="flex flex-col md:flex-row items-center p-8 mb-16">

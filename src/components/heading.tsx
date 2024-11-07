@@ -5,7 +5,7 @@ interface HeadingProps {
 
 const Heading = ({ title, subtitle }: HeadingProps) => {
   return (
-    <div className="relative flex items-center  h-48 overflow-hidden pt-16">
+    <div className="relative flex items-center h-48 overflow-hidden pt-16">
       <h1 className="absolute text-[5rem] lg:text-[9rem] font-[900] font-montserrat text-gray-500 opacity-10 z-10 lg:-top-8 top-10 left-1 ">
         {title}
       </h1>

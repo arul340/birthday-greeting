@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed bg-white shadow font-inter z-50 max-w-full w-full">
-      <div className="container mx-auto flex justify-between items-center p-4 lg:px-24">
+      <div className="container mx-auto flex justify-between items-center p-4 lg:px-24 ">
         {/* Logo */}
         <div className="text-2xl font-bold flex items-center space-x-2">
           <NavLink to={"/"}>
@@ -49,7 +49,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Items*/}
       <nav
-        className={`lg:hidden bg-white shadow absolute top-full left-1/2 transform -translate-x-1/2 w-4/5 z-20 ease-in-out transition-all duration-700 overflow-hidden ${
+        className={`lg:hidden bg-white shadow absolute top-full left-1/2 transform -translate-x-1/2 w-4/5  ease-in-out transition-all duration-700 overflow-hidden z-50 ${
           isOpen ? "max-h-60 border-t-[3px] border-black" : "max-h-0"
         }`}
       >

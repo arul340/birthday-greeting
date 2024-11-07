@@ -6,7 +6,7 @@ interface CountdownProps {
   onClick: () => void; // Callback for when the Start button is clicked
 }
 
-const Countdown: React.FC<CountdownProps> = ({ targetDate, onClick }) => {
+const Countdown = ({ targetDate, onClick }: CountdownProps) => {
   const calculateTimeLeft = () => {
     const now = new Date().getTime();
     const distance = targetDate.getTime() - now;
@@ -43,39 +43,39 @@ const Countdown: React.FC<CountdownProps> = ({ targetDate, onClick }) => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-header text-white">
-      <h2 className="lg:text-4xl font-bold mb-4 text-mandy/60 text-center text-xl">
-        Countdown to <span className="text-mandy">Lorem Ipsum</span> Birthday
+      <h2 className="lg:text-3xl 2xl:text-5xl text-3xl font-bold lg:mb-10 mb-5 text-mandy/60 text-center">
+        Countdown to <span className="text-mandy">Lorem Ipsum's</span> Birthday
       </h2>
-      <div className="flex space-x-4 mb-6">
+      <div className="grid lg:grid-cols-4 grid-cols-2 gap-5">
         <div className="flex flex-col items-center">
-          <div className="bg-mandy/60 lg:p-4 lg:px-8 p-3 rounded-lg lg:text-3xl text-xl font-semibold text-center">
+          <div className="bg-mandy/60 lg:p-4 lg:px-6 p-3 w-28 rounded-lg lg:text-3xl text-xl font-semibold text-center">
             {timeLeft.days}
-            <p className="font-light text-xs ">Days</p>
+            <p className="font-light text-sm">Days</p>
           </div>
         </div>
         <div className="flex flex-col items-center">
-          <div className="bg-mandy/60 lg:p-4 lg:px-8 p-3 rounded-lg lg:text-3xl text-xl font-semibold text-center">
+          <div className="bg-mandy/60 lg:p-4 lg:px-6 p-3 w-28 rounded-lg lg:text-3xl text-xl font-semibold text-center">
             {timeLeft.hours}
-            <p className="font-light text-xs ">Hours</p>
+            <p className="font-light text-sm ">Hours</p>
           </div>
         </div>
         <div className="flex flex-col items-center">
-          <div className="bg-mandy/60 lg:p-4 lg:px-6 p-3 rounded-lg lg:text-3xl text-xl font-semibold text-center">
+          <div className="bg-mandy/60 lg:p-4 lg:px-6 p-3 w-28 rounded-lg lg:text-3xl text-xl font-semibold text-center">
             {timeLeft.minutes}
-            <p className="font-light text-xs ">Minutes</p>
+            <p className="font-light text-sm ">Minutes</p>
           </div>
         </div>
         <div className="flex flex-col items-center">
-          <div className="bg-mandy/60 lg:p-4 lg:px-6 p-3 rounded-lg lg:text-3xl text-xl font-semibold text-center">
+          <div className="bg-mandy/60 lg:p-4 lg:px-6 p-3 w-28 rounded-lg lg:text-3xl text-xl font-semibold text-center">
             {timeLeft.seconds}
-            <p className="font-light text-xs ">Seconds</p>
+            <p className="font-light text-sm ">Seconds</p>
           </div>
         </div>
       </div>
 
       <button
         onClick={onClick}
-        className="mt-4 px-6 py-2 text-white rounded-lg bg-mandy hover:bg-mandy/80 transition"
+        className="mt-8 px-8 py-2 text-white rounded-lg bg-mandy hover:bg-mandy/80 transition"
       >
         Start
       </button>

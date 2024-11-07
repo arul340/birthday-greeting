@@ -6,7 +6,7 @@ interface GiftBoxProps {
   toggleModal: () => void;
 }
 
-const GiftBox: React.FC<GiftBoxProps> = ({ toggleModal }) => {
+const GiftBox = ({ toggleModal }: GiftBoxProps) => {
   const [step, setStep] = useState(1);
   const stepMinutes = [2000, 2000, 1000];
 

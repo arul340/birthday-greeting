@@ -24,7 +24,7 @@ const Coupons = () => {
       <div className="bg-[#FCFCFE]">
         <div className="container mx-auto px-4 lg:px-24 ">
           <section className="overflow-hidden text-gray-700">
-            <div className="mt-32">
+            <div className="mt-28">
               <Heading title="coupons" subtitle="for your special day &lt;3" />
             </div>
             <section className="font-inter ">

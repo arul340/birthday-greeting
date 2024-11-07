@@ -41,7 +41,7 @@ const images: Image[] = [
   },
 ];
 
-const Gallery: React.FC = () => {
+const Gallery = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
     null
   );
@@ -105,8 +105,8 @@ const Gallery: React.FC = () => {
       <div className="mb-32">
         <div className="container mx-auto px-4 lg:px-24">
           <section className="overflow-hidden text-gray-700">
-            <div className="mt-32">
-              <Heading title="Gallery" subtitle="Lorem ipsum" />
+            <div className="mt-28 mb-8">
+              <Heading title="gallery" subtitle="lorem ipsum" />
             </div>
             <div className="flex flex-wrap -m-1 md:-m-2">
               {/* Left Column */}
